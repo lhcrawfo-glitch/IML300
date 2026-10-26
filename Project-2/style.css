@@ -1,0 +1,29 @@
+p:hover {
+  color: white
+}
+body {
+  background-color: black
+}
+.image-container {
+  position: fixed;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  width: 1000px;
+  height: fit-content
+}
+
+/* 3. Pull the text out of the normal layout flow and position it */
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Perfectly offsets the text to center it */
+  
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
