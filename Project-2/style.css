@@ -1,6 +1,16 @@
 p:hover {
   color: white
 }
+@font-face {
+  font-family: "MyFont";
+  src: url("Project-2/pixelfont.zip") format("zip"),
+  url("fProject-2/pixelfont.zip") format("zip"),
+  url("Project-2/pixelfont.zip") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   background-color: black;
   margin: 0;
@@ -23,7 +33,7 @@ body {
 body {
   position: relative;
   overflow-x: hidden;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "MyFont";
   color: #fff;
   background: #000;
 }
