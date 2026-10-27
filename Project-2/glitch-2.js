@@ -1,6 +1,7 @@
-// Procedural p5.js glitch animation. No image needed: everything is drawn in code.
-// Drifting color blocks sit on a dark background; every so often a glitch burst hits
-// with an RGB split, shifted slices, noise bars and a screen flicker.
+// Procedural p5.js glitch animation that overlays the page's image.
+// The canvas is transparent: the <img> shows through, and the glitch effects
+// (color blocks, RGB split, shifted slices, noise bars, scanlines) draw on top.
+// Layering: <img> (z-index -1)  <  this canvas (z-index 0)  <  page text (z-index 1)
 
 const BLOCK_COUNT = 14;
 let blocks = [];
@@ -10,11 +11,12 @@ function setup() {
   pixelDensity(1);
   const c = createCanvas(windowWidth, windowHeight);
 
-  // Pin the canvas behind the page text, full screen, no margins
+  // Full screen, no margins, above the image, below the text, never blocks clicks
   c.style("position", "fixed");
   c.style("top", "0");
   c.style("left", "0");
-  c.style("z-index", "-1");
+  c.style("z-index", "0");
+  c.style("pointer-events", "none");
 
   noStroke();
   makeBlocks();
@@ -42,7 +44,7 @@ function updateBlocks() {
 }
 
 function draw() {
-  background(10, 10, 18);
+  clear(); // transparent, so the image underneath stays visible
 
   // Randomly start a glitch burst lasting a few frames
   if (burst === 0 && random() < 0.04) {
@@ -61,9 +63,9 @@ function draw() {
   drawScanlines();
 }
 
-// Quiet frame: soft blue-gray blocks drifting slowly
+// Quiet frame: faint blue-gray blocks drifting slowly over the image
 function calmFrame() {
-  fill(60, 70, 110, 90);
+  fill(60, 70, 110, 40);
   for (const b of blocks) rect(b.x, b.y, b.w, b.h);
 }
 
@@ -77,12 +79,12 @@ function glitchFrame() {
   ];
   blendMode(ADD);
   for (const [r, g, bl, off] of channels) {
-    fill(r, g, bl, 110);
+    fill(r, g, bl, 90);
     for (const b of blocks) rect(b.x + off, b.y, b.w, b.h);
   }
   blendMode(BLEND);
 
-  // Horizontally shifted slices of whatever has been drawn so far
+  // Horizontally shifted slices of the effects drawn so far
   const slices = floor(random(3, 10));
   for (let i = 0; i < slices; i++) {
     const y = floor(random(height));
