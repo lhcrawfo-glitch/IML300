@@ -3,9 +3,15 @@ p:hover {
 }
 @font-face {
   font-family: "MyFont";
-  src: url("Project-2/pixelfont.zip") format("zip"),
-  url("fProject-2/pixelfont.zip") format("zip"),
-  url("Project-2/pixelfont.zip") format("truetype");
+  src: url("pixelfont/Geist_Pixel/GeistPixel-Regular-VariableFont_ELSH.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MyFont2";
+  src: url("Rubik_Broken_Fax/RubikBrokenFax-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -36,6 +42,12 @@ body {
   font-family: "MyFont";
   color: #fff;
   background: #000;
+}
+
+#text {
+  color: lightgrey;
+  font-size: 2rem;
+  font-family: "MyFont2";
 }
  
 /* Every image on every page fills the screen and stays centered */
