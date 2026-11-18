@@ -1,0 +1,40 @@
+body {
+  background-color: #d9d2e9;
+  font-family: Helvetica, sans-serif;
+}
+
+.container {
+/*     background-color: yellow; */
+  margin: 30px;
+  text-align: center;
+}
+
+input {
+  height: 40px;
+  border: 1px solid #c4c4c4;
+  border-radius: 15px;
+  background-color: transparent;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 20px;
+}
+
+#chat-container{
+  font-size: 500px;
+/*   background-color: yellow; */
+  
+  margin:auto;
+  width:70vw;
+  display: grid;
+  grid-template-columns: auto auto  auto; 
+}
+
+.response{
+  background-color: red;
+  color:white;
+  margin:0.2em;
+  padding: 1em;
+  border-radius: 15px;
+  box-shadow: 0 0 50px #fff;
+  
+  /*   border: 1px solid white; */
+}
